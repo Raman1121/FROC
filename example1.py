@@ -19,11 +19,11 @@ if __name__ == '__main__':
     
     #compute FROC    
     sensitivity_list, FPavg_list, _ = computeFROC(proba_map,ground_truth, allowedDistance, nbr_of_thresholds, range_threshold)
-    print 'computed FROC'
+    print('computed FROC')
     
     #plot FROC
     plotFROC(FPavg_list,sensitivity_list,save_path)
-    print 'plotted FROC'
+    print('plotted FROC')
     
     
     

@@ -8,7 +8,8 @@ from scipy.optimize import linear_sum_assignment
 import pandas as pd
 from pdb import set_trace as bp
 import os
-import iocsv
+from readWrite import saveListCsv, saveListCsvMultiCol, readListCsv, readListCsvMultiCol 
+# import iocsv
 
 def computeAssignment(list_detections,list_gt,allowedDistance,save_disagreement=False):
     #the assignment is based on the hungarian algorithm
@@ -277,7 +278,7 @@ def computeFROC(proba_map, ground_truth, allowedDistance, nbr_of_thresholds=40, 
             #append results to list
             FP_list_proba_map.append(FP)
             #check that ground truth contains at least one positive
-            if (type(ground_truth) == np.ndarray and np.nonzero(ground_truth) > 0) or (type(ground_truth) == list and len(ground_truth) > 0):
+            if (type(ground_truth) == np.ndarray and len(np.nonzero(ground_truth)[0]) > 0) or (type(ground_truth) == list and len(ground_truth) > 0):
                 sensitivity_list_proba_map.append(TP*1./P)
             
         
